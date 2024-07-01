@@ -1,1 +1,1 @@
-This repo mostly uses Python as the programming language.
+Welcome to my programming journey.
