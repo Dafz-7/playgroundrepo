@@ -1,1 +1,1 @@
-Welcome to my programming journey.
+Welcome to my programming and coding journey.
