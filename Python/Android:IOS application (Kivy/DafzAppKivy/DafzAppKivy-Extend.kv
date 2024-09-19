@@ -1,0 +1,101 @@
+<MainScreen>:
+    do_default_tab: False #* Disable default tab to customize tab items
+    TabbedPanelItem:
+        text: 'To-Do List' #* First tab labeled "To-Do List"
+        ToDoList: #* Refers to the ToDoList class defined in the python code
+
+    TabbedPanelItem:
+        text: 'Habit Tracker' #* Second tab labeled "Habit Tracker"
+        HabitTracker: #* Refers to the HabitTracker class defined in the python code
+
+<ToDoList>:
+    task_input: task_input #* Link task_input's object property from the python code
+    task_grid: task_grid #* Link task_grid's object property from the python code
+    priority_spinner: priority_spinner #* Link priority_spinner's object property from the python code
+    BoxLayout:
+        orientation:'vertical' #* Vertical layout for stacking input, buttons, and task list
+        TextInput:
+            id: task_input #* Input field for the task description
+            hint_text: 'Enter the name of the task' #* Placeholder text in the input field
+        Spinner:
+            id: priority_spinner #* Dropdown to select task priority
+            text: 'Normal' #* Default value for the spinner
+            values: ['Easy', 'Normal', 'Hard'] #* Options for the dropdown
+        Button:
+            text: 'Add task' #* Button to add a new task
+            on_press: root.add_task() #* Call the add_task function from the python file
+        Button:
+            text: 'Sort tasks' #* Button to sort tasks based on priority
+            on_press: root.sort_tasks() #* Call the sort_tasks function from the python file
+        ScrollView:
+            size_hint: (1, 1) # Scrollable container for tasks, fills the available space
+            BoxLayout:
+                orientation:'vertical' #* Contains the task grid
+                size_hint_y: None #* Disable automatic resizing
+                height: self.minimum_height #* Set height dynamically based on content
+                GridLayout:
+                    cols: 3 #* Grid with 3 columns: Task, Priority, and Delete button
+                    size_hint_y: None #* Disable automatic resizing for grid
+                    Label:
+                        text: 'Task' #* Header label for the task column
+                        bold: True
+                        size_hint_x: 0.6
+                    Label:
+                        text:'Priority' #* Header label for the priority column
+                        bold: True
+                        size_hint_x: 0.2
+                    Label:
+                        text:'Delete' #* Header label for the delete button column
+                        bold: True
+                        size_hint_x: 0.2
+                BoxLayout:
+                    id: task_grid #* BoxLayout where tasks are dynamically added
+                    orientation: 'vertical' #* Vertical layout for tasks
+                    size_hint_y: None #* Disable automatic resizing
+                    height: self.minimum_height #* Dynamic height based on the number of tasks
+
+<HabitTracker>:
+    habit_input: habit_input #* Link habit_input's object property from the python code
+    habit_grid: habit_grid #* Link habit_grid's object property from the python code
+    repeat_spinner: repeat_spinner #* Link repeat_spinner's object property from the python code
+    BoxLayout:
+        orientation:'vertical' #* Vertical layout for stacking input, buttons, and habit list
+        TextInput:
+            id: habit_input #* Input field for the habit description
+            hint_text: 'Enter habit name and description' #* Placeholder text
+        Spinner:
+            id: repeat_spinner #* Dropdown to select habit repetition
+            text: 'Daily' #* Default value for the spinner
+            values: ['Daily', 'Weekly', 'Monthly', 'Yearly'] #* Options for the dropdown
+        Button:
+            text: 'Add habit' #* Button to add a new habit
+            on_press: root.add_habit() #* Call the add_habit function from the python code
+        Button:
+            text: 'Sort habits' #* Button to sort habits based on repetition
+            on_press: root.sort_habits() #* Call the sort_habits function from the python code
+        ScrollView:
+            size_hint: (1, 1) #* Scrollable container for habits, fills the available space
+            BoxLayout:
+                orientation:'vertical' #* Contains the habit grid
+                size_hint_y: None #* Disable automtic resizing
+                height: self.minimum_height #* Set height dynamically based on content
+                GridLayout:
+                    cols: 3 #* Grid with 3 columns: Habit, Repeat, and Delete button
+                    size_hint_y: None #* Disable automatic resizing for grid
+                    Label:
+                        text:'Habit' #* Header label for the habit column
+                        bold: True
+                        size_hint_x: 0.6
+                    Label:
+                        text: 'Repeat' #* Header label for the repeat column
+                        bold: True
+                        size_hint_x: 0.2
+                    Label:
+                        text: 'Delete' #* Header label for the delete button column
+                        bold: True
+                        size_hint_x: 0.2
+                BoxLayout:
+                    id: habit_grid #* BoxLayout where habits are dynamically added
+                    orientation: 'vertical'
+                    size_hint_y: None #* Disable automatic resizing
+                    height: self.minimum_height #* Dynamic height based on the number of habits
