@@ -74,12 +74,12 @@ def random_forest_model(X_train, y_train, X_test, y_test, n_estimators=100):
     print(f"Random Forest Accuracy: {accuracy:.2f}")
     return y_pred
 
-#* Call the functions and make predictions
+#* calling the functions
 logistic_predictions = logistic_regression_model(X_train, y_train, X_test, y_test)
 knn_predictions = knn_model(X_train, y_train, X_test, y_test, n_neighbors=5)
 random_forest_predictions = random_forest_model(X_train, y_train, X_test, y_test, n_estimators=100)
 
-#* Display predictions
+#* display the results of each machine's predictions
 print("\nLogistic Regression Predictions:")
 print(logistic_predictions)
 print("Evaluation: This model produces mostly 1s for the 'result' column, meaning that higher student will have the chance to succeed.")
