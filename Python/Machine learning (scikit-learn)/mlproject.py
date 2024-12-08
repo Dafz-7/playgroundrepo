@@ -1,4 +1,4 @@
-# This python file is comparing four machine learning models: Logical regression, K-Nearest Neighbors, and Random Forest Classification
+# This python file is comparing three machine learning models: Logical regression, K-Nearest Neighbors, and Random Forest Classification
 
 #* import libraries
 import pandas as pd  
