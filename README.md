@@ -1,1 +1,1 @@
-Thsi is my programming and coding journey.
+This is my programming and coding journey.
