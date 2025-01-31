@@ -1,1 +1,1 @@
-This is my programming and coding journey.
+My coding practices / playground.
