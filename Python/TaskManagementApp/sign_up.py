@@ -75,7 +75,7 @@ class SignUpWindow(QWidget):
                            (username, password, nickname))
             conn.commit()
             QMessageBox.information(self, "Success", "Account created successfully! Please log in.")
-            self.redirect_to_login()  # Redirect to Log In page
+            self.redirect_to_login()  # redirect to Log In page
         except Exception as err:
             QMessageBox.warning(self, "Error", f"Could not create account: {err}")
         finally:
