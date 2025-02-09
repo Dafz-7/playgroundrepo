@@ -24,12 +24,12 @@ class WelcomePage(QWidget):
         layout.addWidget(self.label_welcome)
 
         # Task Scheduling Button
-        self.btn_task_scheduling = QPushButton("Go to Task Scheduling", self)
+        self.btn_task_scheduling = QPushButton("Go to task scheduling", self)
         self.btn_task_scheduling.clicked.connect(self.go_to_task_scheduling)
         layout.addWidget(self.btn_task_scheduling)
 
         # Save Data Button
-        self.btn_save_data = QPushButton("Save Data", self)
+        self.btn_save_data = QPushButton("Save data", self)
         self.btn_save_data.clicked.connect(self.save_data)
         layout.addWidget(self.btn_save_data)
 

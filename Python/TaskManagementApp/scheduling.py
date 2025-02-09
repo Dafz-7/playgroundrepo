@@ -30,7 +30,7 @@ class TaskScheduler(QWidget):
         # Task Table
         self.task_table = QTableWidget()
         self.task_table.setColumnCount(4)
-        self.task_table.setHorizontalHeaderLabels(["Task", "Deadline (numbers)", "Priority", "Occurrence"])
+        self.task_table.setHorizontalHeaderLabels(["Task", "Deadline", "Priority", "Occurrence"])
         layout.addWidget(self.task_table)
 
         # Load tasks from database
@@ -38,11 +38,11 @@ class TaskScheduler(QWidget):
 
         # Buttons
         btn_layout = QHBoxLayout()
-        self.btn_add = QPushButton("Add Task")
+        self.btn_add = QPushButton("Add task")
         self.btn_add.clicked.connect(self.add_task)
         btn_layout.addWidget(self.btn_add)
 
-        self.btn_delete = QPushButton("Delete Task")
+        self.btn_delete = QPushButton("Delete task")
         self.btn_delete.clicked.connect(self.delete_task)
         btn_layout.addWidget(self.btn_delete)
 
