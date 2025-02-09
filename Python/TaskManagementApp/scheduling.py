@@ -1,15 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton, QTableWidget, QTableWidgetItem, QLineEdit, QComboBox, QHBoxLayout, QMessageBox
 from PyQt5.QtGui import QFont
-import mysql.connector
-
-def connect_db():
-    return mysql.connector.connect(
-        host="localhost",
-        user="tmastorage",
-        password="jonggol",
-        database="TaskManagementApp"
-    ) 
+from db_connection import connect_db
 
 class TaskScheduler(QWidget):
     def __init__(self, user_id, nickname):
