@@ -17,18 +17,18 @@ class WelcomePage(QWidget):
 
         layout = QVBoxLayout()
 
-        # Welcome Label
+        # welcome label
         self.label_welcome = QLabel(f"Welcome, {self.nickname}", self)
         self.label_welcome.setFont(QFont("Arial", 18, QFont.Bold))
         self.label_welcome.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.label_welcome)
 
-        # Task Scheduling Button
+        # task scheudling button
         self.btn_task_scheduling = QPushButton("Go to task scheduling", self)
         self.btn_task_scheduling.clicked.connect(self.go_to_task_scheduling)
         layout.addWidget(self.btn_task_scheduling)
 
-        # Save Data Button
+        # save data button
         self.btn_save_data = QPushButton("Save data", self)
         self.btn_save_data.clicked.connect(self.save_data)
         layout.addWidget(self.btn_save_data)
@@ -52,14 +52,14 @@ class WelcomePage(QWidget):
         if self.user_id:
             self.task_scheduling_page = TaskScheduler(self.user_id, self.nickname)
             self.task_scheduling_page.show()
-            self.close()  # Close the welcome page
+            self.close()  # close the welcome page
 
     def save_data(self):
         """Save user task data from Task Scheduling to the database."""
         conn = connect_db()
         cursor = conn.cursor()
 
-        # Retrieve current tasks
+        # retrieve current tasks
         cursor.execute("SELECT task_name, deadline, priority, occurrence FROM tasks WHERE user_id = %s", (self.user_id,))
         tasks = cursor.fetchall()
 
@@ -67,7 +67,7 @@ class WelcomePage(QWidget):
             QMessageBox.warning(self, "Save Failed", "No tasks to save.")
             return
 
-        # Commit and close
+        # commit to database and close
         conn.commit()
         conn.close()
         
@@ -75,6 +75,6 @@ class WelcomePage(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = WelcomePage("example_username", None)  # Replace with actual username from login
+    window = WelcomePage("example_username", None)  # replace with actual username from login
     window.show()
     sys.exit(app.exec_())

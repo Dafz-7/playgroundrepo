@@ -14,7 +14,7 @@ def connect_db():
 class TaskScheduler(QWidget):
     def __init__(self, user_id, nickname):
         super().__init__()
-        self.user_id = user_id  # Store user ID for database queries
+        self.user_id = user_id  # store user id for database queries
         self.nickname = nickname
 
         self.setWindowTitle("Task Scheduling - TSS")
@@ -22,21 +22,21 @@ class TaskScheduler(QWidget):
 
         layout = QVBoxLayout()
 
-        # Title
+        # title
         self.label_title = QLabel(f"User's task scheduling space - {self.nickname} (please save before exiting)", self)
         self.label_title.setFont(QFont("Arial", 14, QFont.Bold))
         layout.addWidget(self.label_title)
 
-        # Task Table
+        # task table
         self.task_table = QTableWidget()
         self.task_table.setColumnCount(4)
         self.task_table.setHorizontalHeaderLabels(["Task", "Deadline", "Priority", "Occurrence"])
         layout.addWidget(self.task_table)
 
-        # Load tasks from database
+        # load tasks from database
         self.load_tasks()
 
-        # Buttons
+        # buttons
         btn_layout = QHBoxLayout()
         self.btn_add = QPushButton("Add task")
         self.btn_add.clicked.connect(self.add_task)
@@ -94,23 +94,23 @@ class TaskScheduler(QWidget):
         if conn:
             cursor = conn.cursor()
 
-            # Delete existing tasks before saving
+            # delete existing tasks before saving
             cursor.execute("DELETE FROM tasks WHERE user_id = %s", (self.user_id,))
 
-            # Insert updated tasks
+            # insert updated tasks
             for row in range(self.task_table.rowCount()):
                 task_name = self.task_table.item(row, 0).text().strip() if self.task_table.item(row, 0) else ""
                 deadline = self.task_table.item(row, 1).text().strip() if self.task_table.item(row, 1) else None
                 priority = self.task_table.item(row, 2).text().strip() if self.task_table.item(row, 2) else "Medium"
                 
-                # ✅ Fix: Ensure occurrence is properly stored
+                # ensure occurrence is properly stored
                 occurrence_item = self.task_table.item(row, 3)
                 occurrence = occurrence_item.text().strip() if occurrence_item and occurrence_item.text() else ""
 
-                # ✅ Fix: Ensure occurrence is not None before inserting
+                # ensure occurrence is not None before inserting
                 occurrence = occurrence if occurrence else "One-time"
 
-                # ✅ Fix: Print debug output to verify occurrence is being read correctly
+                # print debug output to verify occurrence is being read correctly
                 print(f"Saving Task: {task_name}, Deadline: {deadline}, Priority: {priority}, Occurrence: {occurrence}")
 
                 cursor.execute("""
@@ -122,9 +122,9 @@ class TaskScheduler(QWidget):
             conn.close()
             QMessageBox.information(self, "Success", "Tasks saved successfully!")
 
-# Run the App
+# run the app
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = TaskScheduler(user_id=1, nickname="User")  # Test with dummy user
+    window = TaskScheduler(user_id=1, nickname="User")  # test with dummy user
     window.show()
     sys.exit(app.exec_())
