@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
 
 #* Reading the CSV file
-df = pd.read_csv("diabetes.csv")
+df = pd.read_csv("/Users/dafzz07/Documents/GitHub/My-ProjectLearnings/Python/Machine learning (scikit-learn)/diabetes.csv")
 print(df.head())
 
 print()
