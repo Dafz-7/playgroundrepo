@@ -59,7 +59,7 @@ class Student {
     private int student_id;
     private ArrayList<Double> grades;
 
-    // constructor
+    // constructor delete this word
     public Student(String student_name, int student_id) {
         this.student_name = student_name;
         this.student_id = student_id;
