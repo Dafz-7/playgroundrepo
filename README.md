@@ -1,1 +1,1 @@
-My coding practices / playground.
+My coding practice playground.
