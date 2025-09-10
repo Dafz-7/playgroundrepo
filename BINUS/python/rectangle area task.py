@@ -1,4 +1,5 @@
 # calculate the area of a rectangle.
+
 # no AI involved.
 
 length = int(input("Enter any length of a rectangle in centimeter: "))
